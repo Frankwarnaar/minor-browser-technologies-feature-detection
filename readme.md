@@ -4,8 +4,10 @@ In this project I researched some features in HTML, CSS and Javascript. My goal 
 
 ## HTML
 
-### []<Details> element
-The details element makes it possible to
+### [Details element](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/details.html)
+The details element makes it possible to make a block collapsable with plain html.
+
+#### Syntax
 ```HTML
 <details>
 	<summary>Click me</summary>
