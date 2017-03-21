@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Details</title>
+		<style>
+		body {
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			font-family: sans-serif;
+		}
+
+		details {
+			margin: 0 auto;
+			max-width: 20em;
+			min-width: min-content;
+			width: 100%;
+		}
+
+		details summary {
+			cursor: pointer;
+			border-bottom: 1px solid #333;
+		}
+
+		details p {
+			display: block;
+			opacity: 0;
+		}
+
+		details[open] p {
+			opacity: 1;
+		}
+		</style>
+	</head>
+	<body>
+		<details>
+			<summary>Click me</summary>
+			<p>Now you can see some more content!</p>
+		</details>
+	</body>
+</html>
