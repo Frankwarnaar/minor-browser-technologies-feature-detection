@@ -16,16 +16,43 @@
 		margin: 0 auto;
 	}
 
+	article p {
+		max-width: 100%;
+		float: left;
+	}
+
+
 	@media screen and (min-width: 544px) {
-		article {
-			column-count: 2;
-			column-gap: 2em;
+		article p {
+			max-width: 50%;
+			padding: .5em;
 		}
 	}
 
+
 	@media screen and (min-width: 768px) {
-		article {
-			column-count: 3;
+		article p {
+			max-width: 33.33%;
+		}
+	}
+
+	@supports (column-count: 2 ) {
+		@media screen and (min-width: 544px) {
+			article {
+				column-count: 2;
+				column-gap: 1em;
+				padding: 0;
+			}
+
+			article p {
+				max-width: 100%;
+			}
+		}
+
+		@media screen and (min-width: 768px) {
+			article {
+				column-count: 3;
+			}
 		}
 	}
 	</style>
@@ -40,12 +67,6 @@
 		</p>
 		<p>
 		Suspendisse ornare fermentum tellus eu commodo. Curabitur neque urna, ornare nec turpis non, mattis mollis dui. Proin volutpat tempor mi, eget rutrum lectus iaculis eu. Duis non pretium sem, a iaculis arcu. Proin viverra turpis sit amet congue sagittis. Curabitur mattis lorem ac nisi mattis, vitae placerat quam hendrerit. Sed ut tristique risus. In sed orci est. Sed dictum ac dolor in tincidunt. Proin mollis neque lectus. Sed gravida ante mauris, nec aliquam mi maximus ac. Cras volutpat molestie justo at pharetra. Maecenas nisi nibh, tristique id tincidunt scelerisque, hendrerit eu erat. Sed vehicula dolor dolor, et aliquet leo tincidunt non.
-		</p>
-		<p>
-		In eget congue enim. Nullam viverra felis id pharetra consequat. Integer auctor augue a eros volutpat, eu commodo massa lobortis. Cras volutpat orci vitae lorem scelerisque, eu porttitor eros sollicitudin. Nam blandit, lacus blandit pretium ornare, mauris mi tempus leo, ut finibus sem metus dictum tortor. Praesent eu gravida diam. Vivamus ac mi quis sapien aliquet commodo. Curabitur eget pulvinar metus. Suspendisse aliquet justo id facilisis luctus. Sed sollicitudin rutrum elementum. Etiam vulputate ex vitae ligula scelerisque finibus. Donec non arcu sit amet dolor euismod aliquam. Pellentesque ut quam sed dolor facilisis maximus id id sapien. Fusce condimentum metus quis purus aliquam sagittis. Quisque eu ullamcorper dolor, non vehicula enim. Phasellus vel massa quis quam tempor euismod.
-		</p>
-		<p>
-		Donec vulputate vitae justo vitae dapibus. Suspendisse id nulla erat. Proin dictum magna lorem, nec vestibulum lacus cursus at. Suspendisse risus erat, dictum quis mauris nec, finibus varius arcu. Praesent lorem quam, mollis sit amet varius ut, pharetra in lectus. Sed mauris ex, gravida eget ipsum vel, convallis scelerisque eros. Integer et egestas felis. Donec nec ante sem. Aliquam ac dui tempus orci feugiat lacinia et sit amet turpis. Pellentesque viverra nunc nec dolor auctor feugiat. Nullam nulla neque, accumsan sed risus feugiat, semper volutpat arcu. Duis porta, libero vitae dictum volutpat, nisi sapien dapibus orci, id vulputate nibh purus lobortis nunc. Quisque sagittis lacus et commodo finibus. Quisque in turpis ac elit placerat sodales. In sodales erat ac maximus interdum. Sed eget nibh lectus.
 		</p>
 	</article>
 </body>
