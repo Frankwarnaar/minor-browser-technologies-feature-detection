@@ -29,6 +29,10 @@ The details element is not supported by IE, Edge and Opera Mini. Firefox has sup
 #### Fallback
 If the browser does not support the details element, it shows all the elements. So the element has a fallback for itself.
 
+#### Resources
+* [caniuse](http://caniuse.com/#search=details)
+* [MDN - details](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)
+
 ### 2. Meter element
 [demo](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/meter.html)
 The meter element shows a bar that shows the progress or level of something.
@@ -66,6 +70,10 @@ This results in the next on old browsers:
 
 <p>My progress on my browser technologies is 48%</p>
 
+#### Resources
+* [caniuse](http://caniuse.com/#search=meter)
+* [MDN - meter](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter)
+
 ## CSS
 
 ### 1. Columns
@@ -91,49 +99,84 @@ CSS columns are supported in all browsers, except IE < 10.
 Use floats as fallback for columns. This is the way I solved this:
 ```css
 article {
-		column-count: 1;
-		max-width: 1080px;
-		margin: 0 auto;
-	}
+	column-count: 1;
+	max-width: 1080px;
+	margin: 0 auto;
+}
 
+article p {
+	max-width: 100%;
+	float: left;
+	box-sizing: border-box;
+}
+
+
+@media screen and (min-width: 544px) {
 	article p {
-		max-width: 100%;
-		float: left;
-		box-sizing: border-box;
+		max-width: 50%;
+		padding: .5em;
 	}
+}
 
-
+@supports (column-count: 2 ) {
 	@media screen and (min-width: 544px) {
+		article {
+			column-count: 2;
+			column-gap: 1em;
+			padding: 0;
+		}
+
 		article p {
-			max-width: 50%;
-			padding: .5em;
+			max-width: 100%;
 		}
 	}
-
-
-	@media screen and (min-width: 768px) {
-		article p {
-			max-width: 33.33%;
-		}
-	}
-
-	@supports (column-count: 2 ) {
-		@media screen and (min-width: 544px) {
-			article {
-				column-count: 2;
-				column-gap: 1em;
-				padding: 0;
-			}
-
-			article p {
-				max-width: 100%;
-			}
-		}
-
-		@media screen and (min-width: 768px) {
-			article {
-				column-count: 3;
-			}
-		}
-	}
+}
 ```
+
+#### Resources
+* [w3c schools - columns](https://www.w3schools.com/css/css3_multiple_columns.asp)
+* [caniuse](http://caniuse.com/#search=columns)
+
+### 2. :in-range, :out-of-range pseudo selectors
+[Demo](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/range-pseudo.html)
+
+Select inputs of which their value are between the range of the min and max attributes.
+
+#### Syntax
+```css
+input:in-range {
+	// properties
+}
+
+input:out-of-range {
+	// properties
+}
+```
+
+#### Support
+This selector has support for all browsers, except IE and Edge 12. On Edge and Safari the :in-range selector also incorrectly matches when there are no min and/or max attributes are set. On Safari inputs incorrectly match on disabled and read-only inputs. On Opera Mini the selector only applies styles on load, but not on change of the input.
+
+#### Fallback
+Use javascript to check if the value of an input is in range of the min and max. For example:
+```js
+var $inputs = document.querySelectorAll('input[type="number"]');
+$inputs.forEach(function($input) {
+	setRangeState($input);
+
+	$input.addEventListener('input', function() {
+		setRangeState($input);
+	});
+});
+
+function setRangeState($input) {
+	if (Number($input.value) > Number($input.getAttribute('min')) && Number($input.value) < Number($input.getAttribute('max'))) {
+		$input.className = "in-range";
+	} else {
+		$input.className = "out-of-range";
+	}
+}
+```
+
+#### Resources
+* [css4 - range pseudo classes](http://css4.rocks/selectors-level-4/range-pseudo-classes.php)
+* [caniuse](http://caniuse.com/#search=in-range)
