@@ -223,3 +223,31 @@ You can use synchronous code as fallback, like i did in my demo. You can checkou
 #### Resources
 * [MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 * [caniuse](http://caniuse.com/#search=promise)
+
+### 2. Geolocation
+[demo](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/location.html)
+
+Get the users location via the geolation API.
+
+#### Syntax
+```js
+navigator.geolocation.getCurrentPosition(function(data) {
+	console.log(data.coords.latitude);
+	console.log(data.coords.longitude);
+});
+```
+
+#### Support
+Geolocation is supported in every browser, except IE < 9 and Opera Mini. Besides that, https is required to use the geolocation api.
+
+#### Fallback
+Always check if the geolocation api is available. Otherwise use inputs to let the user enter his location.
+```js
+if (navigator.geolocation) {
+	// Do stuff
+}
+```
+
+#### Resources
+* [caniuse](http://caniuse.com/#search=geolocation)
+* [mdn](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation)
