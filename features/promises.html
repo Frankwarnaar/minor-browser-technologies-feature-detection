@@ -39,7 +39,7 @@
 
 		function getRandomGiphy() {
 			if(typeof(Promise) !== "undefined" && Promise.toString().indexOf("[native code]") !== -1){
-				var getGiphy = new Promise((resolve, reject) {
+				var getGiphy = new Promise(function(resolve, reject) {
 						var xhr = new XMLHttpRequest();
 
 						xhr.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
@@ -62,8 +62,6 @@
 				getGiphy.then(function(giphy) {
 					$img.setAttribute('src', giphy.data.image_original_url);
 					$img.className = '';
-				}).catch(function(err) {
-					console.log(err);
 				});
 			} else {
 				var xhr = new XMLHttpRequest();
