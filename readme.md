@@ -4,7 +4,8 @@ In this project I researched some features in HTML, CSS and Javascript. My goal 
 
 ## HTML
 
-### [1. Details element](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/details.html)
+### 1. Details element
+[demo](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/details.html)
 The details element makes it possible to make a block collapsable with plain html.
 
 #### Syntax
@@ -27,7 +28,9 @@ The details element is not supported by IE, Edge and Opera Mini. Firefox has sup
 #### Fallback
 If the browser does not support the details element, it shows all the elements. So the element has a fallback for itself.
 
-### [2. Meter element](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/meter.html)
+### 2. Meter element
+[demo](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/meter.html)
+The meter element shows a bar that shows the progress or level of something.
 
 #### Syntax
 ```HTML
