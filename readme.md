@@ -180,3 +180,46 @@ function setRangeState($input) {
 #### Resources
 * [css4 - range pseudo classes](http://css4.rocks/selectors-level-4/range-pseudo-classes.php)
 * [caniuse](http://caniuse.com/#search=in-range)
+
+## Javascript
+
+### 1. Promises
+[demo](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/promises.html)
+
+A promise is generally used for async tasks, like getting data. 
+
+#### Syntax
+```js
+var promises new Promise(function (reject, resolve) {
+	//do something
+	resolve(returnValue);
+	
+	if (err) {
+		reject(err)
+	}
+}));
+
+promises.then(calculation => {
+	console.log(returnValue);
+}).catch(err => {
+	console.log(err);
+});
+```
+
+#### Support
+Promises are not supported by IE, IE Mobile, Opera Mini and Android browser < 4.4
+
+#### Fallback
+Check if the client supports Promises with:
+```js
+if (typeof Promise !== "undefined" && Promise.toString().indexOf("[native code]") !== -1){
+	// Promise supported
+} else {
+	// Promise not supported
+}
+```
+You can use synchronous code as fallback, like i did in my demo. You can checkout the code [here](https://github.com/Frankwarnaar/minor-browser-technologies-feature-detection/blob/master/features/promises.html)
+
+#### Resources
+* [MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+* [caniuse](http://caniuse.com/#search=promise)
