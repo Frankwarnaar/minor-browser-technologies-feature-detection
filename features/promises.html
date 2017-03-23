@@ -42,7 +42,7 @@
 				var getGiphy = new Promise(function(resolve, reject) {
 					var xhr = new XMLHttpRequest();
 
-					xhr.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
+					xhr.open('GET', 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
 
 					xhr.onload = function() {
 						if (this.status >= 200 && this.status < 300) {
@@ -65,13 +65,13 @@
 					console.log(err);
 				});
 			} else {
-				if (window.XDomainRequest) {
+				if (typeof(window.XDomainRequest) !== 'undefined') {
 					var xhr = new XDomainRequest();
 				} else {
 					var xhr = new XMLHttpRequest();
 				}
 
-				xhr.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
+				xhr.open('GET', 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
 
 				xhr.onload = function() {
 					if (this.status >= 200 && this.status < 300) {
