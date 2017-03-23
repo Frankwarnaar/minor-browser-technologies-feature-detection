@@ -65,7 +65,11 @@
 					console.log(err);
 				});
 			} else {
-				var xhr = new XMLHttpRequest();
+				if (window.XDomainRequest) {
+					var xhr = new window.XDomainRequest();
+				} else {
+					var xhr = new XMLHttpRequest();
+				}
 
 				xhr.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
 
