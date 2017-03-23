@@ -62,6 +62,8 @@
 				getGiphy.then(function(giphy) {
 					$img.setAttribute('src', giphy.data.image_original_url);
 					$img.className = '';
+				}).catch(function(err) {
+					console.log(err);
 				});
 			} else {
 				var xhr = new XMLHttpRequest();
