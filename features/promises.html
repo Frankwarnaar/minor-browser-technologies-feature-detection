@@ -31,8 +31,8 @@
 		</section>
 	</body>
 	<script>
-		var $button = document.querySelector('button');
-		var $img = document.querySelector('img');
+		var $button = document.getElementsByTagName('button')[0];
+		var $img = document.getElementsByTagName('img')[0];
 
 		$button.className = '';
 		$button.addEventListener('click', getRandomGiphy);
