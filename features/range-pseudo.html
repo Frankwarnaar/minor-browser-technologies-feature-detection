@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Range pseudo classes</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	body {
+		margin: 0;
+		font-family: sans-serif;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-height: 100vh;
+	}
+
+	form {
+		margin: 0 auto;
+	}
+
+	label {
+		display: block;
+		margin-bottom: 1em;
+	}
+
+	input:in-range,
+	input.in-range {
+		border: 1px solid green;
+	}
+
+	input:out-of-range,
+	input.out-of-range {
+		border: 1px solid red;
+	}
+	</style>
+</head>
+<body>
+	<form>
+		<h1>Range pseudo classes</h1>
+		<label>Number
+			<input type="number" min="0" max="10" value="12"/>
+		</label>
+		<label>Number
+			<input type="number" min="0" max="10" value="6"/>
+		</label>
+	</form>
+	<script>
+		var $inputs = document.querySelectorAll('input[type="number"]');
+		$inputs.forEach(function($input) {
+			setRangeState($input);
+
+			$input.addEventListener('input', function() {
+				setRangeState($input);
+			});
+		});
+
+		function setRangeState($input) {
+			if (Number($input.value) > Number($input.getAttribute('min'))
+				&& Number($input.value) < Number($input.getAttribute('max'))
+			) {
+				$input.className = "in-range";
+			} else {
+				$input.className = "out-of-range";
+			}
+		}
+	</script>
+</body>
+</html>
