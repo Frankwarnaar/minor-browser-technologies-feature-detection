@@ -65,7 +65,7 @@
 					console.log(err);
 				});
 			} else {
-				if (typeof(window.XDomainRequest) !== 'undefined') {
+				if (typeof(XDomainRequest) !== 'undefined') {
 					var xhr = new XDomainRequest();
 				} else {
 					var xhr = new XMLHttpRequest();
@@ -83,7 +83,7 @@
 				};
 
 				xhr.onerror = function() {
-					reject({status: this.status, statusText: xhr.statusText});
+					console.log({status: this.status, statusText: xhr.statusText});
 				};
 
 				xhr.send();
