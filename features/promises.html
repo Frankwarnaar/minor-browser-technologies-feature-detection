@@ -82,8 +82,8 @@
 					}
 				};
 
-				xhr.onerror = function() {
-					console.log({status: this.status, statusText: xhr.statusText});
+				xhr.onerror = function(err) {
+					console.log(err);
 				};
 
 				xhr.send();
