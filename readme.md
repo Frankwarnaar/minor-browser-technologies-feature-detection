@@ -64,3 +64,74 @@ If the element is supported, the content inside the meter is not showed. Place a
 This results in the next on old browsers:
 
 <p>My progress on my browser technologies is 48%</p>
+
+## CSS
+
+### 1. Columns
+[Demo](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/columns.html)
+With the columns properties, you can easily make a muli-column layout. For example, this is useful for articles.
+
+#### Syntax
+```css
+article {
+	// Amount of columns
+	column-count: 2; 
+	
+	//Gutter size between columns
+	column-gap: 1em;
+}
+```
+
+#### Support
+CSS columns are supported in all browsers, except IE < 10.
+
+#### Fallback
+Use floats as fallback for columns. This is the way I solved this:
+```css
+article {
+		column-count: 1;
+		max-width: 1080px;
+		margin: 0 auto;
+	}
+
+	article p {
+		max-width: 100%;
+		float: left;
+		box-sizing: border-box;
+	}
+
+
+	@media screen and (min-width: 544px) {
+		article p {
+			max-width: 50%;
+			padding: .5em;
+		}
+	}
+
+
+	@media screen and (min-width: 768px) {
+		article p {
+			max-width: 33.33%;
+		}
+	}
+
+	@supports (column-count: 2 ) {
+		@media screen and (min-width: 544px) {
+			article {
+				column-count: 2;
+				column-gap: 1em;
+				padding: 0;
+			}
+
+			article p {
+				max-width: 100%;
+			}
+		}
+
+		@media screen and (min-width: 768px) {
+			article {
+				column-count: 3;
+			}
+		}
+	}
+```
