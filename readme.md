@@ -6,6 +6,7 @@ In this project I researched some features in HTML, CSS and Javascript. My goal 
 
 ### 1. Details element
 [demo](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/details.html)
+
 The details element makes it possible to make a block collapsable with plain html.
 
 #### Syntax
@@ -69,6 +70,7 @@ This results in the next on old browsers:
 
 ### 1. Columns
 [Demo](https://frankwarnaar.github.io/minor-browser-technologies-feature-detection/features/columns.html)
+
 With the columns properties, you can easily make a muli-column layout. For example, this is useful for articles.
 
 #### Syntax
