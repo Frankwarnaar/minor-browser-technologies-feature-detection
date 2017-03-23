@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Template literals</title>
+		<style>
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			font-family: sans-serif;
+		}
+
+		section {
+			margin: 0 auto;
+		}
+		</style>
+	</head>
+	<body>
+		<section>
+			<h1>Hello</h1>
+		</section>
+	</body>
+	<script>
+		var string = 'test'
+		var today = new Date();
+		var day = today.getDate();
+		var month = today.getMonth() + 1;
+		var year = today.getFullYear();
+
+		if (`${string}`.indexOf('test') >= 0) {
+			if (day < 10) {
+				day = `0${day}`;
+			}
+
+			if (month < 10) {
+				month = `0${month}`;
+			}
+
+			var today = `${day}-${month}-${year}`;
+			var content = `<h2>The date is: ${today}</h2>`;
+		} else {
+			if (day < 10) {
+				day = '0' + day;
+			}
+
+			if (month<10) {
+				month='0' + month;
+			}
+			var today = day +'-' + month+ '-' + year;
+			var content = '<h2>The date is: ' + today + '</h2>'
+		}
+		document.querySelector('section').insertAdjacentHTML('beforeend', content);
+	</script>
+</html>
