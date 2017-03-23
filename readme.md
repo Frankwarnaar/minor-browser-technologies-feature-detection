@@ -24,10 +24,10 @@ Results in:
 </details>
 
 #### Support
-The details element is not supported by IE, Edge and Opera Mini. Firefox has support from version 49. The element hides all the elements but the summary inside the details element. 
+The details element is not supported by IE, Edge and Opera Mini. Firefox has support from version 49.
 
 #### Fallback
-If the browser does not support the details element, it shows all the elements. So the element has a fallback for itself.
+If the browser does not support the details element, it shows all the elements inside it. So the element has a fallback for itself.
 
 #### Resources
 * [caniuse](http://caniuse.com/#search=details)
