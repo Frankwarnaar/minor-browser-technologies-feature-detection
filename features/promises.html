@@ -38,27 +38,26 @@
 		$button.addEventListener('click', getRandomGiphy);
 
 		function getRandomGiphy() {
-			if(typeof(Promise) !== "undefined" && Promise.toString().indexOf("[native code]") !== -1){
+			if(typeof Promise !== "undefined" && Promise.toString().indexOf("[native code]") !== -1){
 				var getGiphy = new Promise(function(resolve, reject) {
-						var xhr = new XMLHttpRequest();
+					var xhr = new XMLHttpRequest();
 
-						xhr.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
+					xhr.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
 
-						xhr.onload = function() {
-							if (this.status >= 200 && this.status < 300) {
-								resolve(JSON.parse(xhr.responseText));
-							} else {
-								reject({status: this.status, statusText: xhr.statusText});
-							}
-						};
-
-						xhr.onerror = function() {
+					xhr.onload = function() {
+						if (this.status >= 200 && this.status < 300) {
+							resolve(JSON.parse(xhr.responseText));
+						} else {
 							reject({status: this.status, statusText: xhr.statusText});
-						};
+						}
+					};
 
-						xhr.send();
-					});
-				}
+					xhr.onerror = function() {
+						reject({status: this.status, statusText: xhr.statusText});
+					};
+
+					xhr.send();
+				});
 				getGiphy.then(function(giphy) {
 					$img.setAttribute('src', giphy.data.image_original_url);
 					$img.className = '';
