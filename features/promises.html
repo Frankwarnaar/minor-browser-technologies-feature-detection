@@ -38,7 +38,7 @@
 		$button.addEventListener('click', getRandomGiphy);
 
 		function getRandomGiphy() {
-			if (typeof Promise === "undefined"){
+			if (Promise === "undefined"){
 				var xhr = new XMLHttpRequest();
 
 				xhr.open('GET', 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
@@ -58,32 +58,30 @@
 
 				xhr.send();
 			} else {
-				var getGiphy = new Promise(function(resolve, reject) {
-					var xhr = new XMLHttpRequest();
-
-					xhr.open('GET', 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
-
-					xhr.onload = function() {
-						if (this.status >= 200 && this.status < 300) {
-							resolve(JSON.parse(xhr.responseText));
-						} else {
-							reject({status: this.status, statusText: xhr.statusText});
-						}
-					};
-
-					xhr.onerror = function() {
-						reject({status: this.status, statusText: xhr.statusText});
-					};
-
-					xhr.send();
-				});
-
-				getGiphy.then(function(giphy) {
-					$img.setAttribute('src', giphy.data.image_original_url);
-					$img.className = '';
-				}).catch(function(err) {
-					console.log(err);
-				});
+				// var getGiphy = new Promise(function(resolve, reject) {
+				// 	var xhr = new XMLHttpRequest();
+				//
+				// 	xhr.open('GET', 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
+				//
+				// 	xhr.onload = function() {
+				// 		if (this.status >= 200 && this.status < 300) {
+				// 			resolve(JSON.parse(xhr.responseText));
+				// 		} else {
+				// 			reject({status: this.status, statusText: xhr.statusText});
+				// 		}
+				// 	};
+				//
+				// 	xhr.onerror = function() {
+				// 		reject({status: this.status, statusText: xhr.statusText});
+				// 	};
+				//
+				// 	xhr.send();
+				// });
+				//
+				// getGiphy.then(function(giphy) {
+				// 	$img.setAttribute('src', giphy.data.image_original_url);
+				// 	$img.className = '';
+				// });
 			}
 		}
 	</script>
