@@ -38,8 +38,8 @@
 		$button.addEventListener('click', getRandomGiphy);
 
 		function getRandomGiphy() {
-			if (typeof Promise !== "undefined" && Promise.toString().indexOf("[native code]") !== -1){
-				var getGiphy = new Promise((resolve, reject) => {
+			if (typeof Promise !== "undefined" || Promise.toString().indexOf("[native code]") !== -1){
+				var getGiphy = new Promise(function(resolve, reject) {
 					var xhr = new XMLHttpRequest();
 
 					xhr.open('GET', 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
