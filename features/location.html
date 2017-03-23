@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Geolocation</title>
+		<style>
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			font-family: sans-serif;
+		}
+
+		form {
+			margin: 0 auto;
+		}
+
+		.hidden {
+			display: none;
+		}
+		</style>
+	</head>
+	<body>
+		<form>
+			<h1>Geo location</h1>
+			<label>
+				Latitude
+				<input type="number" name="latitude"/>
+			</label>
+			<label>
+				Longitude
+				<input type="number" name="longitude"/>
+			</label>
+		</form>
+	</body>
+	<script>
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(data) {
+				document.querySelector('[name="latitude"]').value = data.coords.latitude;
+				document.querySelector('[name="longitude"]').value = data.coords.longitude;
+			});
+		}
+	</script>
+</html>
