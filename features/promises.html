@@ -31,17 +31,44 @@
 		</section>
 	</body>
 	<script>
-		var $button = document.getElementsByTagName('button')[0];
-		var $img = document.getElementsByTagName('img')[0];
+		var $button = document.querySelector('button');
+		var $img = document.querySelector('img');
 
 		$button.className = '';
 		$button.addEventListener('click', getRandomGiphy);
 
 		function getRandomGiphy() {
-			if (Promise === "undefined"){
+			if(typeof(Promise) !== "undefined" && Promise.toString().indexOf("[native code]") !== -1){
+				var getGiphy = new Promise((resolve, reject) {
+						var xhr = new XMLHttpRequest();
+
+						xhr.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
+
+						xhr.onload = function() {
+							if (this.status >= 200 && this.status < 300) {
+								resolve(JSON.parse(xhr.responseText));
+							} else {
+								reject({status: this.status, statusText: xhr.statusText});
+							}
+						};
+
+						xhr.onerror = function() {
+							reject({status: this.status, statusText: xhr.statusText});
+						};
+
+						xhr.send();
+					});
+				}
+				getGiphy.then(function(giphy) {
+					$img.setAttribute('src', giphy.data.image_original_url);
+					$img.className = '';
+				}).catch(function(err) {
+					console.log(err);
+				});
+			} else {
 				var xhr = new XMLHttpRequest();
 
-				xhr.open('GET', 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
+				xhr.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
 
 				xhr.onload = function() {
 					if (this.status >= 200 && this.status < 300) {
@@ -57,31 +84,6 @@
 				};
 
 				xhr.send();
-			} else {
-				// var getGiphy = new Promise(function(resolve, reject) {
-				// 	var xhr = new XMLHttpRequest();
-				//
-				// 	xhr.open('GET', 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC');
-				//
-				// 	xhr.onload = function() {
-				// 		if (this.status >= 200 && this.status < 300) {
-				// 			resolve(JSON.parse(xhr.responseText));
-				// 		} else {
-				// 			reject({status: this.status, statusText: xhr.statusText});
-				// 		}
-				// 	};
-				//
-				// 	xhr.onerror = function() {
-				// 		reject({status: this.status, statusText: xhr.statusText});
-				// 	};
-				//
-				// 	xhr.send();
-				// });
-				//
-				// getGiphy.then(function(giphy) {
-				// 	$img.setAttribute('src', giphy.data.image_original_url);
-				// 	$img.className = '';
-				// });
 			}
 		}
 	</script>
